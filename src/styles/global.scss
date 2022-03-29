@@ -58,6 +58,15 @@ body {
   animation: fadeIn 2s;
   // transition: opacity 0.5s ease;
   // opacity: 1;
+  &.preload {
+    animation: none !important;
+    opacity: 0;
+    *::after,
+    *::before {
+      animation: none !important;
+      opacity: 0;
+    }
+  }
 }
 
 .banner {
@@ -141,5 +150,4 @@ a {
     text-decoration: none;
     color: inherit;
   }
-
 }

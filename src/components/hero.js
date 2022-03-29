@@ -2,7 +2,7 @@ import React from 'react';
 import MainLayout from "../layouts/main-layout";
 
 
-const UnderConstruction = () => {
+const Hero = ({ header, text, textOptional = "" }) => {
 
   const [isPreload, setIsPreload] = React.useState(true);
 
@@ -19,10 +19,10 @@ const UnderConstruction = () => {
           <div className="banner">
             <div className="inner">
               <h2>
-                สินสวัสดิ์
+                {header}
               </h2>
-              <p>เรากำลังปรับเปลี่ยนเว็บไซต์</p>
-              <p>ไปยัง <a href="https://www.rubbertubesinsawad.com/">Yellow Pages</a></p>
+              <p>{text}</p>
+              {textOptional && <p>{textOptional}</p>}
             </div>
 
           </div>
@@ -32,4 +32,4 @@ const UnderConstruction = () => {
   );
 };
 
-export default UnderConstruction;
+export default Hero;

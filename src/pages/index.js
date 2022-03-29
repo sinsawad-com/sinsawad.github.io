@@ -1,11 +1,13 @@
 import * as React from "react";
-import UnderConstruction from "../components/under-construction";
+import Hero from "../components/hero";
+
 
 // markup
 const IndexPage = () => {
   return (
     <div>
-      <UnderConstruction />
+      <Hero header="สินสวัสดิ์" text="เราคือผู้จัดจำหน่าย ท่อยาง สายลมยาง" textOptional="ยางอุตสาหกรรม และยางซิลิโคน" />
+
     </div>
   );
 };
