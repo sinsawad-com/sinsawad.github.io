@@ -87,6 +87,19 @@ body {
     color: #fff;
     letter-spacing: 0.4em;
     z-index: 1;
+    @media (min-width: 320px) {
+      font-size: 1em;
+    }
+    @media (min-width: 480px) {
+      font-size: 1.25em;
+    }
+    @media (min-width: 768px) {
+      font-size: 1.5em;
+    }
+    @media (min-width: 1024px) {
+      font-size: 1.75em;
+    }
+
     // animation: flip .5s;
     &:before {
       top: 0;
