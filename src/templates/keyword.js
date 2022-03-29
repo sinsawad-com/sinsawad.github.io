@@ -6,11 +6,11 @@ const KeywordTemplate = (props) => {
   return (
     <div>KeywordTemplate {pageContext.keyword}
 
-      {pageContext.products.map((product, index) => (
+      {/* {pageContext.products.map((product, index) => (
         <div key={`product-${index}`}>
           {product.productName}
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };
