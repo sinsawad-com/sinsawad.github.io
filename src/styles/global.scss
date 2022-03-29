@@ -1,6 +1,136 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes wider {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes flip {
+  0% {
+    transform: perspective(400px) translateZ(0) rotateY(0) scale 1;
+    animation-timing-function: ease-out;
+  }
+  40% {
+    transform: perspective(400px) translateZ(150px) rotateY(170deg) scale(1);
+    animation-timing-function: ease-out;
+  }
+  50% {
+    transform: perspective(400px) translateZ(150px) rotateY(190deg) scale(1);
+    animation-timing-function: ease-in;
+  }
+  80% {
+    transform: perspective(400px) translateZ(0) rotateY(360deg) scale(0.95);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: perspective(400px) translateZ(0) rotateY(360deg) scale(1);
+    animation-timing-function: ease-in;
+  }
+}
+
 html,
 body {
   font-family: "Kanit", sans-serif;
+  padding: 0px;
+  margin: 0px;
+  background-color: #2e3842;
+  color: #fff;
+  // font-size: 15pt;
+  font-weight: 400;
+  letter-spacing: 0.075em;
+  line-height: 1.65em;
+}
+
+.page-wrapper {
+  animation: fadeIn 2s;
+  // transition: opacity 0.5s ease;
+  // opacity: 1;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: default;
+  height: 100vh;
+  min-height: 35em;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+
+  a {
+    &:visited {
+      color: #fff;
+    }
+  }
+
+  h2 {
+    display: inline-block;
+    font-size: 1.75em;
+    opacity: 1;
+    padding: 0.5em 25vw;
+    position: relative;
+    line-height: 1.75em;
+    color: #fff;
+    letter-spacing: 0.4em;
+    z-index: 1;
+    // animation: flip .5s;
+    &:before {
+      top: 0;
+      left: 0;
+    }
+    &:after {
+      bottom: 0;
+      right: 0;
+    }
+    &:before,
+    &:after {
+      animation: wider 2.5s, fadeIn 1.5s;
+      background: #fff;
+      content: "";
+      display: block;
+      height: 2px;
+      position: absolute;
+      width: 100%;
+    }
+  }
+}
+
+.main-body {
+  background: #2e3842;
+
+  &.landing {
+    .page-wrapper {
+      background-image: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.5),
+          rgba(0, 0, 0, 0.5)
+        ),
+        url(/images/industrial-plant-5968230_1920.jpg);
+      background-attachment: fixed;
+      background-position: 50%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding-top: 0;
+    }
+  }
+}
+
+a {
+  &:any-link {
+    text-decoration: none;
+  }
 }
