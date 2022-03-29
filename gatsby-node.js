@@ -149,8 +149,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // console.log(keywordPages);
   Object.keys(keywordPages).forEach(key => {
     const node = keywordPages[key];
-    console.log(Object.keys(node));
-    console.log(node.products.length);
+    // console.log(Object.keys(node));
+    // console.log(node.products.length);
     createPage({
       path: `/keyword/${node.key}`,
       component: keywordTemplate,

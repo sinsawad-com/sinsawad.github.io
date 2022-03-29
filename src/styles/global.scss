@@ -71,12 +71,6 @@ body {
   position: relative;
   text-align: center;
 
-  a {
-    &:visited {
-      color: #fff;
-    }
-  }
-
   h2 {
     display: inline-block;
     font-size: 1.75em;
@@ -145,5 +139,7 @@ body {
 a {
   &:any-link {
     text-decoration: none;
+    color: inherit;
   }
+
 }
