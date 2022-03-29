@@ -31,7 +31,9 @@ async function main() {
 
       data.push({
         // productId,
-        hash,
+        hash: '',
+        key: decodeURIComponent(productUrl).split('/').pop(),
+        // slug: productUrl.split('/').pop(),
         productUrl, productImageUrl, productName, productDescription,
         // keywords: [], categories: []
       });
@@ -45,11 +47,17 @@ async function main() {
     // return Object.entries(a.reduce((t, v) => ({ ...t, [v.textContent.replace(/\s+/g, ' ').trim()]: { url: v.href, products: [] } }), {}));
     return a.map(v => ({
       categoryName: v.textContent.replace(/\s+/g, ' ').trim(),
+      key: decodeURIComponent(v.href).split('/').pop(),
       categoryUrl: v.href,
       productUrls: []
     }));
   })))
-    .map(v => ({ ...v, hash: crypto.createHash('md5').update(v.categoryUrl).digest('hex') }));
+    .map(v => ({
+      ...v,
+      // slug: v.categoryName,
+      key: v.key,
+      hash: crypto.createHash('md5').update(v.categoryUrl).digest('hex')
+    }));
   productCategories = [... new Map(productCategories.map(v => [v.hash, v])).values()];
 
   // console.log(productCategories);
@@ -58,12 +66,18 @@ async function main() {
   let keywords = (await page.$$eval(".catalog-keywords .wg-catalog-box div a", (elements => {
     return elements.map(element => ({
       keyword: element.textContent.replace(/\s+/g, ' ').trim(),
+      key: decodeURIComponent(element.href).split('/').pop(),
       keywordUrl: element.href,
       productUrls: []
     }));
   })))
     // create hash for each product
-    .map(e => ({ ...e, hash: crypto.createHash('md5').update(e.keywordUrl).digest('hex') }));
+    .map(e => ({
+      ...e,
+      // slug: e.keyword,
+      key: e.key,
+      hash: crypto.createHash('md5').update(e.keywordUrl).digest('hex')
+    }));
   keywords = [... new Map(keywords.map(v => [v.hash, v])).values()];
 
 
@@ -113,7 +127,9 @@ async function main() {
   const keywordsRows = keywords.map(keyword => {
     return keyword.productUrls.map(productUrl => ({
       hash: keyword.hash,
+      // slug: keyword.slug,
       keyword: keyword.keyword,
+      key: keyword.key,
       keywordUrl: keyword.keywordUrl,
       productUrl: productUrl,
       product: crypto.createHash('md5').update(productUrl).digest('hex')
@@ -124,6 +140,8 @@ async function main() {
   const productCategoriesRows = productCategories.map(category => {
     return category.productUrls.map(productUrl => ({
       hash: category.hash,
+      // slug: category.slug,
+      key: category.key,
       categoryName: category.categoryName,
       categoryUrl: category.categoryUrl,
       productUrl: productUrl,
@@ -149,15 +167,15 @@ async function main() {
   // }
 
   // save to file
-  fs.writeFileSync(path.join(OUTPUT_PATH, 'products', 'products.json'), JSON.stringify(products));
+  fs.writeFileSync(path.join(OUTPUT_PATH, 'product.json'), JSON.stringify(products));
 
   // save keywords to file
   // fs.writeFileSync(path.join(OUTPUT_PATH, 'keywords', 'keywords-old.json'), JSON.stringify(keywords));
-  fs.writeFileSync(path.join(OUTPUT_PATH, 'keywords', 'keywords.json'), JSON.stringify(keywordsRows));
+  fs.writeFileSync(path.join(OUTPUT_PATH, 'keyword.json'), JSON.stringify(keywordsRows));
 
   // save product categories to file
   // fs.writeFileSync(path.join(OUTPUT_PATH, 'categories', 'categories-old.json'), JSON.stringify(productCategories));
-  fs.writeFileSync(path.join(OUTPUT_PATH, 'categories', 'categories.json'), JSON.stringify(productCategoriesRows));
+  fs.writeFileSync(path.join(OUTPUT_PATH, 'category.json'), JSON.stringify(productCategoriesRows));
 
 
   await browser.close();
