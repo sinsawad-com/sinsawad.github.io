@@ -170,7 +170,7 @@ a {
     @media (min-width: 412px) {
       min-height: 11em;
     }
-    @media (min-width: 540px){
+    @media (min-width: 540px) {
       min-height: 15em;
     }
     @media (min-width: 768px) {
@@ -182,7 +182,7 @@ a {
     @media (min-width: 1680px) {
       min-height: 45em;
     }
-    @media (min-width: 1920px){
+    @media (min-width: 1920px) {
       min-height: 52em;
     }
   }
@@ -219,6 +219,32 @@ a {
           ),
           url(/images/banner-1.jpeg);
       }
+      &.banner-2 {
+        background-image: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url(/images/banner-2.jpeg);
+      }
+
+      &.banner-3 {
+        background-image: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url(/images/banner-3.jpeg);
+      }
+
+      &.banner-4 {
+        background-image: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url(/images/banner-4.jpeg);
+      }
     }
   }
 }
@@ -234,7 +260,6 @@ a {
   letter-spacing: 0.4em;
   // letter-spacing: normal;
 
-
   .company-info-container {
     padding: 6em 1em;
 
@@ -243,7 +268,6 @@ a {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-
 
       .company-info-footer-item:first-child {
         margin-top: 2em;
@@ -565,6 +589,16 @@ input.openSidebarMenu[type="checkbox"]:checked
     border-color: $primary-color;
     &:hover {
       background-color: $primary-color-dark;
+      color: #fff;
+    }
+  }
+
+  &.button-outline-primary {
+    background-color: transparent;
+    border-color: $primary-color;
+    color: $primary-color;
+    &:hover {
+      background-color: $primary-color;
       color: #fff;
     }
   }

@@ -1,17 +1,17 @@
 import * as React from 'react';
+import ProductList from "../components/products-list";
+import GenericLayout from "../layouts/generic";
 
 const CategoryTemplate = (props) => {
   const { pageContext } = props;
   console.log('pageContext', pageContext);
   return (
-    <div>CategoryTemplate
-
-      {/* {pageContext.products.map((product, index) => (
-        <div key={`product-${index}`}>
-          {product.productName}
-        </div>
-      ))} */}
-    </div>
+    <GenericLayout
+      title={pageContext.categoryName}
+      text="กลุ่มผลิตภัณฑ์"
+      heroClassName="banner-static banner-1" >
+      <ProductList productList={pageContext.products} />
+    </GenericLayout>
   );
 };
 

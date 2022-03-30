@@ -5,15 +5,15 @@ import {
 const Navbar = () => {
   return (
     <React.Fragment>
-      <div class="sidebar-header"></div>
-      <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" />
-      <label htmlFor="openSidebarMenu" class="sidebarIconToggle">
-        <div class="sidebar-spinner sidebar-diagonal sidebar-part-1"></div>
-        <div class="sidebar-spinner sidebar-horizontal"></div>
-        <div class="sidebar-spinner sidebar-diagonal sidebar-part-2"></div>
+      <div className="sidebar-header"></div>
+      <input type="checkbox" className="openSidebarMenu" id="openSidebarMenu" />
+      <label htmlFor="openSidebarMenu" className="sidebarIconToggle">
+        <div className="sidebar-spinner sidebar-diagonal sidebar-part-1"></div>
+        <div className="sidebar-spinner sidebar-horizontal"></div>
+        <div className="sidebar-spinner sidebar-diagonal sidebar-part-2"></div>
       </label>
       <div id="sidebarMenu">
-        <ul class="sidebarMenuInner">
+        <ul className="sidebarMenuInner">
           <li>สินสวัสดิ์<span>ผู้จัดจำหน่ายผลิตภัณฑ์ยาง</span></li>
           <li><Link to="/products" target="_blank" rel="noreferrer">สินค้า</Link></li>
           <li><Link to="/categories" target="_blank" rel="noreferrer">กลุ่มสินค้า</Link></li>

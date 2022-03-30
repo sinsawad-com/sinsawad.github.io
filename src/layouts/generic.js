@@ -1,11 +1,10 @@
 import React from 'react';
 import MainLayout from "./main-layout";
-
-const GenericLayout = ({ children, title = "", heroClassName }) => {
+import Hero from "../components/hero";
+const GenericLayout = ({ children, title = "", text = "", heroClassName }) => {
   return (
     <MainLayout>
-      <Hero header="สินสวัสดิ์" text={title} textOptional="ยางอุตสาหกรรม และยางซิลิโคน" className={heroClassName} />
-      <CompanyInfo />
+      <Hero header={title} text={text} className={heroClassName} />
       {children}
     </MainLayout>
   );

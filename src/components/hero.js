@@ -2,7 +2,7 @@ import React from 'react';
 
 const Hero = ({ header, text, textOptional = "", className = "" }) => {
 
-  const [isPreload, setIsPreload] = React.useState(true);
+  const [isPreload, setIsPreload] = React.useState(className === "");
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -18,8 +18,8 @@ const Hero = ({ header, text, textOptional = "", className = "" }) => {
             <h2>
               {header}
             </h2>
-            {!className && (<p>{text}</p>)}
-            {!className && textOptional && <p>{textOptional}</p>}
+            <p>{text}</p>
+            {textOptional && <p>{textOptional}</p>}
           </div>
 
         </div>

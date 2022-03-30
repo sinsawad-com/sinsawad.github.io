@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import React from 'react';
 
 const ProductList = ({ limit = Infinity, productList = [] }) => {
@@ -36,12 +36,13 @@ const ProductList = ({ limit = Infinity, productList = [] }) => {
             </div>
             <div className="product-info">
               <h2>{product.productName}</h2>
-              <p><span className="mr">กลุ่มสินค้า:</span>{product.categories.map(category => (
-                <a key={category.key} className="button button-primary mr" href={`/category/${category.key}`}>{category.categoryName}</a>
+              <p><span className="mr">กลุ่มผลิตภัณฑ์:</span>{product.categories.map(category => (
+                <a key={category.key} className="button button-outline-primary mr" href={`/category/${category.key}`}>{category.categoryName}</a>
               ))}</p>
               <p><span className="mr">คำค้น:</span>{product.keywords.map(keyword => (
-                <a key={keyword.key} className="button button-primary mr" href={`/keyword/${keyword.key}`}>{keyword.keyword}</a>
+                <a key={keyword.key} className="button button-outline-primary mr" href={`/keyword/${keyword.key}`}>{keyword.keyword}</a>
               ))}</p>
+              <p><Link to={`/product/${product.key}`} className="button button-primary">รายละเอียด</Link></p>
             </div>
           </div>
         ))
