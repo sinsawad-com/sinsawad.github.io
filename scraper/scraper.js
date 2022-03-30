@@ -8,11 +8,14 @@ const LISTING_PAGE = "https://www.rubbertubesinsawad.com/catalog/brand/%E0%B8%9A
 const OUTPUT_PATH = path.join(__dirname, '../src/data');
 
 async function main() {
-  const browser = await playwright.chromium.launch({
+  const browser = await playwright.firefox.launch({
     headless: false // setting this to true will not run the UI
   });
 
-  const page = await browser.newPage();
+
+  const context = await browser.newContext();
+
+  const page = await context.newPage();
   await page.goto(LISTING_PAGE);
 
   const products = (await page.$$eval('.wg-catalog-list li.catalog-list-item', items => {
@@ -41,7 +44,6 @@ async function main() {
     return data;
   }))
     .map(product => ({ ...product, hash: crypto.createHash('md5').update(product.productUrl).digest('hex') }));
-
 
   let productCategories = (await page.$$eval('.wg-catalog-list li.catalog-list-item .catalog-listview-title p:nth-child(n+1) a', (a => {
     // return Object.entries(a.reduce((t, v) => ({ ...t, [v.textContent.replace(/\s+/g, ' ').trim()]: { url: v.href, products: [] } }), {}));
@@ -165,6 +167,20 @@ async function main() {
   //     }
   //   }
   // }
+
+  for await (let product of products) {
+    await page.goto(product.productUrl);
+    product.images = await page.$$eval(`.wrap-gallery li>img`, images => {
+      let data = [];
+      images.forEach(image => {
+        // data.push(image.src);
+        data.push({ src: image.src, alt: image.alt });
+      });
+      return data;
+    });
+  }
+
+
 
   // save to file
   fs.writeFileSync(path.join(OUTPUT_PATH, 'product.json'), JSON.stringify(products));

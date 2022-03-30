@@ -66,6 +66,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           productDescription
           productImageUrl
           productName
+          images {
+            src
+            alt
+          }
           keywords {
             key
             keyword
@@ -171,6 +175,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         productName: node.productName,
         productImageUrl: node.productImageUrl,
         productDescription: node.productDescription,
+        images: [
+          ...t[node.key]?.images ?? [],
+          ...node.images
+        ],
         keywords: [
           ...t[node.key]?.keywords ?? [],
           ...node.keywords
@@ -193,7 +201,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         productImageUrl: node.productImageUrl,
         productDescription: node.productDescription,
         keywords: node.keywords,
-        categories: node.categories
+        categories: node.categories,
+        images: node.images
       }
     });
   });

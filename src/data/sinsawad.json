@@ -10,7 +10,10 @@
     "09-4294-9561",
     "08-7714-9443"
   ],
-  "lineId": "sin-b79",
+  "lineIds": [
+    "tuk88",
+    "sin-b79"
+  ],
   "email": "admin@sinsawad.com",
   "facebook": "https://www.facebook.com/sinsawad.2008",
   "workingHours": "จันทร์-ศุกร์ เวลา 08:30-17:30",
