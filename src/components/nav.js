@@ -1,5 +1,7 @@
 import React from 'react';
-
+import {
+  Link
+} from "gatsby";
 const Navbar = () => {
   return (
     <React.Fragment>
@@ -13,10 +15,10 @@ const Navbar = () => {
       <div id="sidebarMenu">
         <ul class="sidebarMenuInner">
           <li>สินสวัสดิ์<span>ผู้จัดจำหน่ายผลิตภัณฑ์ยาง</span></li>
-          <li><a href="https://vanila.io" target="_blank" rel="noreferrer">สินค้า</a></li>
-          <li><a href="https://instagram.com/plavookac" target="_blank" rel="noreferrer">กลุ่มสินค้า</a></li>
-          <li><a href="https://twitter.com/plavookac" target="_blank" rel="noreferrer">คำค้น</a></li>
-          <li><a href="https://www.youtube.com/channel/UCDfZM0IK6RBgud8HYGFXAJg" target="_blank" rel="noreferrer">ติดต่อเรา</a></li>
+          <li><Link to="/products" target="_blank" rel="noreferrer">สินค้า</Link></li>
+          <li><Link to="/categories" target="_blank" rel="noreferrer">กลุ่มสินค้า</Link></li>
+          <li><Link to="/keywords" target="_blank" rel="noreferrer">คำค้น</Link></li>
+          <li><Link to="/contact" target="_blank" rel="noreferrer">ติดต่อเรา</Link></li>
         </ul>
       </div>
     </React.Fragment>

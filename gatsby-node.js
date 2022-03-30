@@ -54,8 +54,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             key
             productName
             productImageUrl
-            productDescription
-          }
+            keywords {
+              key
+              keyword
+            }
+            categories {
+              categoryName
+              key
+            }          }
         }
       }
     }
@@ -90,7 +96,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             key
             productName
             productImageUrl
-            productDescription
+            keywords {
+              key
+              keyword
+            }
+            categories {
+              categoryName
+              key
+            }
           }
         }
       }

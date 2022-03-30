@@ -9,7 +9,7 @@ import MainLayout from "../layouts/main-layout";
 const IndexPage = () => {
   return (
     <MainLayout>
-      <Hero header="สินสวัสดิ์" text="เราคือผู้จัดจำหน่าย ท่อยาง สายลมยาง" textOptional="ยางอุตสาหกรรม และยางซิลิโคน" />
+      <Hero header="สินสวัสดิ์" text="เราคือผู้จัดจำหน่าย ท่อยาง สายลมยาง" textOptional="ยางอุตสาหกรรม และยางซิลิโคน" className="" />
       <CompanyInfo />
       {/* <div className="white-space" /> */}
       <ProductList limit={3} />

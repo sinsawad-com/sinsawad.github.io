@@ -1,8 +1,8 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from 'react';
 
-const ProductList = ({ limit = Infinity }) => {
-  const productsResult = useStaticQuery(graphql`
+const ProductList = ({ limit = Infinity, productList = [] }) => {
+  let productsResult = useStaticQuery(graphql`
   query  {
     allProduct{
       nodes {
@@ -22,18 +22,20 @@ const ProductList = ({ limit = Infinity }) => {
   }
   `).allProduct.nodes.slice(0, limit);
 
+  if (productList.length > 0) {
+    productsResult = productList;
+  }
+
   return (
     <div>
       {
-        productsResult.map((product, idx) => (
+        productsResult.map((product) => (
           <div key={product.key} className="product-listing">
             <div className="product-image">
               <img src={product.productImageUrl} alt={product.productName} />
             </div>
             <div className="product-info">
               <h2>{product.productName}</h2>
-              {/* <div className="button">Test</div> */}
-              {/* <div className="button button-primary">Test</div> */}
               <p><span className="mr">กลุ่มสินค้า:</span>{product.categories.map(category => (
                 <a key={category.key} className="button button-primary mr" href={`/category/${category.key}`}>{category.categoryName}</a>
               ))}</p>
