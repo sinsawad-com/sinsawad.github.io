@@ -1,6 +1,4 @@
 import React from 'react';
-import MainLayout from "../layouts/main-layout";
-
 
 const Hero = ({ header, text, textOptional = "" }) => {
 
@@ -13,7 +11,6 @@ const Hero = ({ header, text, textOptional = "" }) => {
   }, []);
 
   return (
-    <MainLayout>
       <div className="landing main-body">
         <div className={`page-wrapper ${isPreload ? 'preload' : ''}`}>
           <div className="banner">
@@ -28,7 +25,6 @@ const Hero = ({ header, text, textOptional = "" }) => {
           </div>
         </div>
       </div>
-    </MainLayout>
   );
 };
 
