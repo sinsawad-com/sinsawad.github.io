@@ -399,7 +399,6 @@ a {
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
-  min-width: 100% !important;
 }
 input.openSidebarMenu[type="checkbox"]:checked ~ #sidebarMenu {
   transform: translateX(0);
@@ -688,25 +687,25 @@ input.openSidebarMenu[type="checkbox"]:checked
     flex-direction: column;
   }
 
-  .address-wrapper {
-    width: 35em;
+  // .address-wrapper {
+  //   width: 35em;
 
-    > div {
-      padding-left: 1em;
-      padding-right: 1em;
-    }
+  //   > div {
+  //     padding-left: 1em;
+  //     padding-right: 1em;
+  //   }
 
-    // &:not(:last-child) {
-    //   margin-bottom: 0em;
-    // }
+  //   @media (max-width: 768px) {
+  //     width: 100%;
+  //     padding-left: 5em;
+  //     padding-right: 5em;
+  //   }
+  // }
 
-    @media (max-width: 768px) {
-      width: 100%;
-      padding-left: 5em;
-      padding-right: 5em;
-      // padding: 0.5em 0.5em !important;
-    }
-  }
+}
+
+.width-100 {
+  width: 100%;
 }
 
 .text-primary {
