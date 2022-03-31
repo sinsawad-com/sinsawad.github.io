@@ -10,7 +10,7 @@ const CategoryListTemplate = (props) => {
   return (
     <GenericLayout
       title={pageContext.categoryName}
-      text="กลุ่มผลิตภัณฑ์"
+      text="คำค้นผลิตภัณฑ์"
       heroClassName="banner-static banner-1" >
       <div className="toggle-wrapper">
         {

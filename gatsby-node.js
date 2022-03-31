@@ -172,7 +172,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
-  const productTemplate = path.resolve(`src/templates/product.js`);
   const productPages = categories.data.allProduct.edges.reduce((t, { node }) => {
     return {
       ...t,
@@ -196,6 +195,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     };
   }, {});
+
+  const productTemplate = path.resolve(`src/templates/product.js`);
+  const productListTemplate = path.resolve(`src/templates/product-list.js`);
+  createPage({
+    path: '/products/',
+    component: productListTemplate,
+    context: {
+      products: productPages
+    }
+  });
+
   Object.keys(productPages).forEach(key => {
     const node = productPages[key];
     createPage({
