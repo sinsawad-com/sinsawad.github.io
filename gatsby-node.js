@@ -1,5 +1,4 @@
 const path = require('path');
-const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
@@ -19,25 +18,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   ];
   createTypes(typeDefs);
 };
-
-// exports.onCreateNode = ({ node, actions, getNode }) => {
-//   // console.log(node.internal.type);
-//   const { createNodeField } = actions;
-
-//   if (['Products', 'Categories', 'Keywords'].includes(node.internal.type)) {
-//     const basePath = `/${node.internal.type.toLowerCase()}/${node.key}`;
-//     const response = createNodeField({
-//       node,
-//       name: `slug`,
-//       value: basePath
-//     });
-
-//     // console.log(
-//     //   'response',
-//     //   response
-//     // );
-//   }
-// };
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
@@ -118,7 +98,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   // Create pages for each category
-  const categoryTemplate = path.resolve(`src/templates/category.js`);
   const categoryPages = categories.data.allCategory.edges.reduce((t, { node }) => {
     return {
       ...t,
@@ -132,12 +111,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     };
   }, {});
+  const categoryTemplate = path.resolve(`src/templates/category.js`);
+  const categoryListTemplate = path.resolve(`src/templates/category-list.js`);
+  createPage({
+    path: '/categories/',
+    component: categoryListTemplate,
+    context: {
+      categories: categoryPages
+    }
+  });
 
   Object.keys(categoryPages).forEach(key => {
-    // console.log(categoryPages[key]);
     const node = categoryPages[key];
-    // categoryPages.forEach(({ node }) => {
-    // console.log('node', node);
     createPage({
       path: `/category/${node.key}`,
       component: categoryTemplate,
@@ -149,7 +134,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
-  const keywordTemplate = path.resolve(`src/templates/keyword.js`);
   const keywordPages = categories.data.allKeyword.edges.reduce((t, { node }) => {
     return {
       ...t,
@@ -163,6 +147,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     };
   }, {});
+  const keywordTemplate = path.resolve(`src/templates/keyword.js`);
+  const keywordListTemplate = path.resolve(`src/templates/keyword-list.js`);
+  createPage({
+    path: '/keywords/',
+    component: keywordListTemplate,
+    context: {
+      keywords: keywordPages
+    }
+  });
   // console.log(keywordPages);
   Object.keys(keywordPages).forEach(key => {
     const node = keywordPages[key];

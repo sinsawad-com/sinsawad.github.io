@@ -23,12 +23,16 @@ const ContactUsPage = () => {
       }
     }`).sinsawad;
 
-  let timeout = null;
+  // let timeout = null;
+  const timeout = React.useRef(null);
 
   React.useEffect(() => {
-    setTimeout(() => {
+    timeout.current = setTimeout(() => {
       document.getElementById("scroll-to-content").scrollIntoView({ behavior: 'smooth' });
     }, 3000);
+    return () => {
+      clearTimeout(timeout.current);
+    };
   }, []);
 
   return (

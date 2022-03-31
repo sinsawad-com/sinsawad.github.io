@@ -3,7 +3,7 @@ import GenericLayout from "../layouts/generic";
 
 const ProductTemplate = (props) => {
   const { pageContext } = props;
-  console.log('pageContext', pageContext);
+  // console.log('pageContext', pageContext);
   const allImages = [{ src: pageContext.productImageUrl, alt: pageContext.productName }].concat(pageContext.images);
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -21,9 +21,18 @@ const ProductTemplate = (props) => {
 
           {
             allImages.map((image, index) => {
-              return <img key={index} src={image.src} alt={image.alt} onClick={() => {
-                setSelectedIndex(index);
-              }} />;
+              return (
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setSelectedIndex(index);
+                  }}
+                  className="button-link"
+                  key={index}
+                >
+                  <img src={image.src} alt={image.alt} />
+                </button>
+              );
             })
           }
 
