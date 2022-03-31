@@ -399,6 +399,7 @@ a {
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
+  min-width: 100% !important;
 }
 input.openSidebarMenu[type="checkbox"]:checked ~ #sidebarMenu {
   transform: translateX(0);
