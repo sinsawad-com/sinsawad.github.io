@@ -11,7 +11,7 @@ const ProductListTemplate = (props) => {
     <GenericLayout
       title={pageContext.categoryName}
       text="รายการสินค้า"
-      heroClassName="banner-static banner-1" >
+      heroClassName="banner-static banner-3" >
       <ProductList productList={products} />
     </GenericLayout>
   );

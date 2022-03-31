@@ -11,7 +11,7 @@ const CategoryListTemplate = (props) => {
     <GenericLayout
       title={pageContext.categoryName}
       text="คำค้นผลิตภัณฑ์"
-      heroClassName="banner-static banner-1" >
+      heroClassName="banner-static banner-2" >
       <div className="toggle-wrapper">
         {
           keywords.map((keyword, index) => {
