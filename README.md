@@ -7,6 +7,7 @@
   Gatsby minimal starter
 </h1>
 
+<!-- Template from https://anubhavsrivastava.github.io/gatsby-starter-spectral/ -->
 ## 🚀 Quick start
 
 1.  **Create a Gatsby site.**
