@@ -42,7 +42,7 @@ const CompanyInfo = () => {
 
           <div className="company-info-footer-item">
             {sinsawad.phone.map((phone) => (
-              <div className="company-contact-media">
+              <div className="company-contact-media" key={`phone-${phone}`}>
                 <i className={`${phone.replace(/-/g, "").startsWith('02') ? "fa-solid fa-square-phone" : "fa-solid fa-mobile-alt"} contact-media`} ></i><a href={`tel:${phone.replace(/-/g, '')}`}>{phone}</a>
               </div>
             ))}

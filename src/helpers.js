@@ -1,0 +1,1 @@
+export const getLineUrl = (lineId) => `https://line.me/ti/p/~${lineId}`;

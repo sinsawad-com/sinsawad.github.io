@@ -14,11 +14,11 @@ const Navbar = () => {
       </label>
       <div id="sidebarMenu">
         <ul className="sidebarMenuInner">
-          <li>สินสวัสดิ์<span>ผู้จัดจำหน่ายผลิตภัณฑ์ยาง</span></li>
-          <li><Link to="/products" target="_blank" rel="noreferrer">สินค้า</Link></li>
-          <li><Link to="/categories" target="_blank" rel="noreferrer">กลุ่มสินค้า</Link></li>
-          <li><Link to="/keywords" target="_blank" rel="noreferrer">คำค้น</Link></li>
-          <li><Link to="/contact" target="_blank" rel="noreferrer">ติดต่อเรา</Link></li>
+          <li><Link to="/">สินสวัสดิ์<span>ผู้จัดจำหน่ายผลิตภัณฑ์ยาง</span></Link></li>
+          <li><Link to="/products/" >สินค้า</Link></li>
+          <li><Link to="/categories/" >กลุ่มสินค้า</Link></li>
+          <li><Link to="/keywords/" >คำค้น</Link></li>
+          <li><Link to="/contact/" >ติดต่อเรา</Link></li>
         </ul>
       </div>
     </React.Fragment>
