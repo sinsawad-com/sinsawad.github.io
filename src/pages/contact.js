@@ -23,9 +23,17 @@ const ContactUsPage = () => {
       }
     }`).sinsawad;
 
+  let timeout = null;
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      document.getElementById("scroll-to-content").scrollIntoView({ behavior: 'smooth' });
+    }, 3000);
+  }, []);
+
   return (
     <GenericLayout title="ติดต่อเรา" heroClassName="">
-      <div>
+      <div id="scroll-to-content">
         <div className="content-area column align-items-center">
           <div className="align-self-center">
             <h2>{sinsawad.companyName}</h2>
