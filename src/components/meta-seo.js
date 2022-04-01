@@ -31,7 +31,7 @@ const MetaSeo = ({ title, description, image, location }) => {
       <meta name="description" content={description || siteDescription} />
       <meta name="og:locale" content="th_TH" />
       <meta name="og:type" content="website" />
-      <meta name="og:title" content={title || siteTitle} />
+      <meta name="og:title" content={siteTitle} />
       <meta name="og:description" content={description || siteDescription} />
       <meta name="og:url" content={`${siteUrl}${location.pathname}`} />
       <meta name="og:site_name" content="สินสวัสดิ์" />
