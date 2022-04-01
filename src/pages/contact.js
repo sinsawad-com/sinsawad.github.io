@@ -3,9 +3,10 @@ import React from 'react';
 import GenericLayout from "../layouts/generic";
 
 import { getLineUrl } from "../helpers";
+import MetaSeo from "../components/meta-seo";
 
-const ContactUsPage = () => {
-
+const ContactUsPage = (props) => {
+  const { location } = props;
   const sinsawad = useStaticQuery(graphql`
     query {
       sinsawad {
@@ -37,6 +38,7 @@ const ContactUsPage = () => {
 
   return (
     <GenericLayout title="ติดต่อเรา" heroClassName="">
+      <MetaSeo title="บริษัท สินสวัสดิ์ จำกัด" description="ติดต่อเรา" location={location} />
       <div id="scroll-to-content">
         <div className="content-area column align-items-center">
           <div className="align-self-center">

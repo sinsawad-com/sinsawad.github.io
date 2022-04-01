@@ -11,7 +11,7 @@ const ProductListTemplate = (props) => {
     <GenericLayout
       title="ผลิตภัณฑ์"
       heroClassName="banner-static banner-3" >
-      <MetaSeo location={location} title="ผลิตภัณฑ์ของสินสวัสดิ์" description="ผลิตภัณฑ์ของสินสวัสดิ์" />
+      <MetaSeo location={location} description="ผลิตภัณฑ์ของสินสวัสดิ์" />
       <ProductList productList={products} />
       <CompanyInfo />
     </GenericLayout>
