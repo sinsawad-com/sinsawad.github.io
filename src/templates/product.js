@@ -1,9 +1,11 @@
 import * as React from 'react';
 import GenericLayout from "../layouts/generic";
 import CompanyInfo from "../components/company-info";
+import MetaSeo from "../components/meta-seo";
 
 const ProductTemplate = (props) => {
-  const { pageContext } = props;
+  console.log('product-props', props);
+  const { pageContext, location } = props;
   const allImages = [{ src: pageContext.productImageUrl, alt: pageContext.productName }].concat(pageContext.images);
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -16,6 +18,7 @@ const ProductTemplate = (props) => {
       text="รายละเอียดผลิตภัณฑ์"
       heroClassName="banner-static banner-2" >
 
+      <MetaSeo location={location} title={pageContext.productName} description={pageContext.productDescription} image={pageContext.productImageUrl} />
       <div className="content-area">
         <div className="left">
 
