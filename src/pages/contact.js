@@ -38,7 +38,7 @@ const ContactUsPage = (props) => {
 
   return (
     <GenericLayout title="ติดต่อเรา" heroClassName="">
-      <MetaSeo title="บริษัท สินสวัสดิ์ จำกัด" description="ติดต่อเรา" location={location} />
+      <MetaSeo title="ติดต่อเรา" description={sinsawad.phone.join(", ")} location={location} />
       <div id="scroll-to-content">
         <div className="content-area column align-items-center">
           <div className="align-self-center">
