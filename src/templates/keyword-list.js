@@ -1,6 +1,7 @@
 import * as React from 'react';
 import GenericLayout from "../layouts/generic";
 import ProductToggle from "../components/product-toggle";
+import CompanyInfo from "../components/company-info";
 
 const CategoryListTemplate = (props) => {
   const { pageContext } = props;
@@ -24,6 +25,7 @@ const CategoryListTemplate = (props) => {
           })
         }
       </div>
+      <CompanyInfo />
     </GenericLayout>
   );
 };

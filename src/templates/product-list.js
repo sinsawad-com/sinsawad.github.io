@@ -1,4 +1,5 @@
 import * as React from 'react';
+import CompanyInfo from "../components/company-info";
 import ProductList from "../components/products-list";
 import GenericLayout from "../layouts/generic";
 
@@ -13,6 +14,7 @@ const ProductListTemplate = (props) => {
       text="รายการสินค้า"
       heroClassName="banner-static banner-3" >
       <ProductList productList={products} />
+      <CompanyInfo />
     </GenericLayout>
   );
 };

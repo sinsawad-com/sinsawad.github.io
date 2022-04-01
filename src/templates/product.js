@@ -1,5 +1,6 @@
 import * as React from 'react';
 import GenericLayout from "../layouts/generic";
+import CompanyInfo from "../components/company-info";
 
 const ProductTemplate = (props) => {
   const { pageContext } = props;
@@ -80,6 +81,7 @@ const ProductTemplate = (props) => {
 
         </div>
       </div>
+      <CompanyInfo />
     </GenericLayout>
   );
 };
