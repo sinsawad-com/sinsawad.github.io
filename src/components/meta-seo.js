@@ -35,7 +35,7 @@ const MetaSeo = ({ title, description, image, location }) => {
       <meta name="og:description" content={description || siteDescription} />
       <meta name="og:url" content={`${siteUrl}${location.pathname}`} />
       <meta name="og:site_name" content="สินสวัสดิ์" />
-      <meta name="og:image" content={image || `${siteUrl}/images/sinsawad-logo.jpeg`} />
+      <meta name="og:image" content={image || `${siteUrl}/images/sinsawad-logo-square.jpeg`} />
     </Helmet>
   );
 };
