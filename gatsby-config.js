@@ -1,8 +1,9 @@
-console.log('dirname', __dirname);
 module.exports = {
   siteMetadata: {
-    title: ``,
-    siteUrl: `https://www.yourdomain.tld`
+    title: `สินสวัสดิ์`,
+    description: `บริษัท สินสวัสดิ์ จำกัด จำหน่ายสินค้าประเภทยางสำหรับงานวิศวกรรมก่อสร้าง`,
+    author: `Praphan Oranphanlert <praphan.o@gmail.com>`,
+    siteUrl: `https://www.sinsawad.com`
   },
   plugins: [
     "gatsby-plugin-sass",
@@ -14,31 +15,6 @@ module.exports = {
         "icon": "src/images/icon.png"
       }
     },
-    // 'gatsby-transformer-json',
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `products`,
-    //     path: `${__dirname}/src/data/products`,
-    //     ignore: [`**/\.*`], // ignore files starting with a dot
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `categories`,
-    //     path: `${__dirname}/src/data/categories`,
-    //     ignore: [`**/\.*`], // ignore files starting with a dot
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `keywords`,
-    //     path: `${__dirname}/src/data/keywords`,
-    //     ignore: [`**/\.*`], // ignore files starting with a dot
-    //   },
-    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

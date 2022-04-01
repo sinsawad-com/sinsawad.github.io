@@ -4,7 +4,7 @@ import ProductList from "./products-list";
 const ProductToggle = ({ buttonName, products }) => {
 
   const [active, setActive] = React.useState(false);
-  console.log(products.length);
+
   return (
     <React.Fragment>
       <div className={`toggle-background ${active ? "active" : ""}`}>

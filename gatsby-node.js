@@ -21,7 +21,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
-  console.log('**** createPages called');
 
   const categories = await graphql(`
   {
@@ -156,11 +155,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       keywords: keywordPages
     }
   });
-  // console.log(keywordPages);
+
   Object.keys(keywordPages).forEach(key => {
     const node = keywordPages[key];
-    // console.log(Object.keys(node));
-    // console.log(node.products.length);
     createPage({
       path: `/keyword/${node.key}`,
       component: keywordTemplate,

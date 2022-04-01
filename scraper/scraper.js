@@ -62,8 +62,6 @@ async function main() {
     }));
   productCategories = [... new Map(productCategories.map(v => [v.hash, v])).values()];
 
-  // console.log(productCategories);
-
 
   let keywords = (await page.$$eval(".catalog-keywords .wg-catalog-box div a", (elements => {
     return elements.map(element => ({
@@ -90,7 +88,6 @@ async function main() {
   // get list of products from each keyword
   // let productUrlsByKeyword = [];
   for (keyword of keywords) {
-    // console.log(keyword);
     await page.goto(keyword.keywordUrl);
     keyword.productUrls = await page.$$eval('.wg-catalog-list li.catalog-list-item', items => {
       const data = [];

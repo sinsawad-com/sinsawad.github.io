@@ -4,7 +4,7 @@ import {
 } from "gatsby";
 const Navbar = () => {
   return (
-    <React.Fragment>
+    <nav>
       <div className="sidebar-header"></div>
       <input type="checkbox" className="openSidebarMenu" id="openSidebarMenu" />
       <label htmlFor="openSidebarMenu" className="sidebarIconToggle">
@@ -21,7 +21,7 @@ const Navbar = () => {
           <li><Link to="/contact/"><div>ติดต่อเรา</div></Link></li>
         </ul>
       </div>
-    </React.Fragment>
+    </nav>
   );
 };
 
