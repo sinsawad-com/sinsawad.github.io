@@ -11,7 +11,7 @@ const CategoryTemplate = (props) => {
       title={pageContext.categoryName}
       text="กลุ่มผลิตภัณฑ์"
       heroClassName="banner-static banner-1" >
-      <MetaSeo location={location} title={`กลุ่มผลิตภัณฑ์ - ${pageContext.categoryName}`} description={`กลุ่มผลิตภัณฑ์ - ${pageContext.categoryName}`} />
+      <MetaSeo location={location} description={`กลุ่มผลิตภัณฑ์ - ${pageContext.categoryName}`} />
       <ProductList productList={pageContext.products} />
       <CompanyInfo />
     </GenericLayout>

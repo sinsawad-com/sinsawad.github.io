@@ -12,7 +12,7 @@ const CategoryListTemplate = (props) => {
       title={pageContext.categoryName}
       text="คำค้นผลิตภัณฑ์"
       heroClassName="banner-static banner-2" >
-      <MetaSeo location={location} title="คำค้นหาผลิตภัณฑ์ของสินสวัสดิ์" description="คำค้นหาผลิตภัณฑ์ของสินสวัสดิ์" />
+      <MetaSeo location={location} description="คำค้นหาผลิตภัณฑ์ของสินสวัสดิ์" />
       <div className="toggle-wrapper">
         {
           keywords.map((keyword, index) => {

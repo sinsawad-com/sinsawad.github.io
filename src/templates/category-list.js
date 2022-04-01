@@ -13,7 +13,7 @@ const CategoryListTemplate = (props) => {
       title={pageContext.categoryName}
       text="กลุ่มผลิตภัณฑ์"
       heroClassName="banner-static banner-1" >
-      <MetaSeo location={location} title="กลุ่มผลิตภัณฑ์ของสินสวัสดิ์" description="กลุ่มผลิตภัณฑ์ของสินสวัสดิ์" />
+      <MetaSeo location={location} description="กลุ่มผลิตภัณฑ์ของสินสวัสดิ์" />
       <div className="toggle-wrapper">
         {
           categories.map((category, index) => {

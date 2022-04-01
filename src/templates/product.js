@@ -18,7 +18,7 @@ const ProductTemplate = (props) => {
       text="รายละเอียดผลิตภัณฑ์"
       heroClassName="banner-static banner-2" >
 
-      <MetaSeo location={location} title={pageContext.productName} description={pageContext.productDescription} image={pageContext.productImageUrl} />
+      <MetaSeo location={location} description={pageContext.productDescription} image={pageContext.productImageUrl} />
       <div className="content-area">
         <div className="left">
 

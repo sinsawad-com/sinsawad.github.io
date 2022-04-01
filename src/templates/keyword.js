@@ -11,7 +11,7 @@ const KeywordTemplate = (props) => {
       title={pageContext.keyword}
       text="คำค้นผลิตภัณฑ์"
       heroClassName="banner-static banner-2" >
-      <MetaSeo location={location} title={`คำค้นหา - ${pageContext.keyword}`} description={`คำค้นหา - ${pageContext.keyword}`} />
+      <MetaSeo location={location} description={`คำค้นหา - ${pageContext.keyword}`} />
       <ProductList productList={pageContext.products} />
       <CompanyInfo />
     </GenericLayout>
