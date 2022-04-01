@@ -58,7 +58,7 @@ const ProductTemplate = (props) => {
               {
                 pageContext.categories.map((category, index) => {
                   return (
-                    <a className="button button-outline-primary" key={index} href={`/category/${category.key}`}>{category.categoryName}</a>
+                    <a className="button button-outline-primary mr" key={index} href={`/category/${category.key}`}>{category.categoryName}</a>
                   );
                 })
               }
@@ -71,7 +71,7 @@ const ProductTemplate = (props) => {
               {
                 pageContext.keywords.map((keyword, index) => {
                   return (
-                    <a className="button button-outline-primary" key={index} href={`/keyword/${keyword.key}`}>{keyword.keyword}</a>
+                    <a className="button button-outline-primary mr" key={index} href={`/keyword/${keyword.key}`}>{keyword.keyword}</a>
                   );
                 })
               }
