@@ -5,7 +5,6 @@ import GenericLayout from "../layouts/generic";
 
 const CategoryTemplate = (props) => {
   const { pageContext } = props;
-  console.log('pageContext', pageContext);
   return (
     <GenericLayout
       title={pageContext.categoryName}

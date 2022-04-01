@@ -5,7 +5,6 @@ import GenericLayout from "../layouts/generic";
 
 const KeywordTemplate = (props) => {
   const { pageContext } = props;
-  console.log('pageContext', pageContext);
   return (
     <GenericLayout
       title={pageContext.keyword}

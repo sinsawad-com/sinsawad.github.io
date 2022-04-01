@@ -4,7 +4,6 @@ import CompanyInfo from "../components/company-info";
 
 const ProductTemplate = (props) => {
   const { pageContext } = props;
-  // console.log('pageContext', pageContext);
   const allImages = [{ src: pageContext.productImageUrl, alt: pageContext.productName }].concat(pageContext.images);
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);

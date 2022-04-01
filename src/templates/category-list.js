@@ -5,9 +5,8 @@ import CompanyInfo from "../components/company-info";
 
 const CategoryListTemplate = (props) => {
   const { pageContext } = props;
-  console.log('pageContext', pageContext);
   const categories = Object.keys(pageContext.categories).map(key => pageContext.categories[key]);
-  console.log('categories', categories);
+
   return (
     <GenericLayout
       title={pageContext.categoryName}

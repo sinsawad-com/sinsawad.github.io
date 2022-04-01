@@ -17,7 +17,7 @@ const CompanyInfo = () => {
     }`);
 
   const { sinsawad } = sinsawadData;
-  console.log(sinsawad);
+
   return (
     <div className="company-info-wrapper">
       <div className="company-info-container">
