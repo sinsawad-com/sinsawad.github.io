@@ -1,4 +1,5 @@
-const path = require('path');
+const path = require("node:path");
+const fs = require("node:fs");
 
 exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
@@ -23,16 +24,39 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   const categories = await graphql(`
-  {
-    allCategory {
-      edges {
-        node {
-          key
-          categoryName
-          product {
+    {
+      allCategory {
+        edges {
+          node {
             key
-            productName
+            categoryName
+            product {
+              key
+              productName
+              productImageUrl
+              keywords {
+                key
+                keyword
+              }
+              categories {
+                categoryName
+                key
+              }
+            }
+          }
+        }
+      }
+      allProduct {
+        edges {
+          node {
+            key
+            productDescription
             productImageUrl
+            productName
+            images {
+              src
+              alt
+            }
             keywords {
               key
               keyword
@@ -40,55 +64,33 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             categories {
               categoryName
               key
-            }          }
+            }
+          }
         }
       }
-    }
-    allProduct {
-      edges {
-        node {
-          key
-          productDescription
-          productImageUrl
-          productName
-          images {
-            src
-            alt
-          }
-          keywords {
+      allKeyword {
+        edges {
+          node {
             key
             keyword
-          }
-          categories {
-            categoryName
-            key
-          }
-        }
-      }
-    }
-    allKeyword {
-      edges {
-        node {
-          key
-          keyword
-          product {
-            key
-            productName
-            productImageUrl
-            keywords {
+            product {
               key
-              keyword
-            }
-            categories {
-              categoryName
-              key
+              productName
+              productImageUrl
+              keywords {
+                key
+                keyword
+              }
+              categories {
+                categoryName
+                key
+              }
             }
           }
         }
       }
     }
-}
-`);
+  `);
 
   // Handle errors
   if (categories.errors) {
@@ -97,30 +99,30 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   // Create pages for each category
-  const categoryPages = categories.data.allCategory.edges.reduce((t, { node }) => {
-    return {
-      ...t,
-      [node.key]: {
-        key: node.key,
-        categoryName: node.categoryName,
-        products: [
-          ...t[node.key]?.products ?? [],
-          node.product
-        ]
-      }
-    };
-  }, {});
+  const categoryPages = categories.data.allCategory.edges.reduce(
+    (t, { node }) => {
+      return {
+        ...t,
+        [node.key]: {
+          key: node.key,
+          categoryName: node.categoryName,
+          products: [...(t[node.key]?.products ?? []), node.product],
+        },
+      };
+    },
+    {}
+  );
   const categoryTemplate = path.resolve(`src/templates/category.js`);
   const categoryListTemplate = path.resolve(`src/templates/category-list.js`);
   createPage({
-    path: '/categories/',
+    path: "/categories/",
     component: categoryListTemplate,
     context: {
-      categories: categoryPages
-    }
+      categories: categoryPages,
+    },
   });
 
-  Object.keys(categoryPages).forEach(key => {
+  Object.keys(categoryPages).forEach((key) => {
     const node = categoryPages[key];
     createPage({
       path: `/category/${node.key}`,
@@ -128,35 +130,35 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         key: node.key,
         categoryName: node.categoryName,
-        products: node.products
-      }
+        products: node.products,
+      },
     });
   });
 
-  const keywordPages = categories.data.allKeyword.edges.reduce((t, { node }) => {
-    return {
-      ...t,
-      [node.key]: {
-        key: node.key,
-        keyword: node.keyword,
-        products: [
-          ...t[node.key]?.products ?? [],
-          node.product
-        ]
-      }
-    };
-  }, {});
+  const keywordPages = categories.data.allKeyword.edges.reduce(
+    (t, { node }) => {
+      return {
+        ...t,
+        [node.key]: {
+          key: node.key,
+          keyword: node.keyword,
+          products: [...(t[node.key]?.products ?? []), node.product],
+        },
+      };
+    },
+    {}
+  );
   const keywordTemplate = path.resolve(`src/templates/keyword.js`);
   const keywordListTemplate = path.resolve(`src/templates/keyword-list.js`);
   createPage({
-    path: '/keywords/',
+    path: "/keywords/",
     component: keywordListTemplate,
     context: {
-      keywords: keywordPages
-    }
+      keywords: keywordPages,
+    },
   });
 
-  Object.keys(keywordPages).forEach(key => {
+  Object.keys(keywordPages).forEach((key) => {
     const node = keywordPages[key];
     createPage({
       path: `/keyword/${node.key}`,
@@ -164,46 +166,40 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         key: node.key,
         keyword: node.keyword,
-        products: node.products
-      }
+        products: node.products,
+      },
     });
   });
 
-  const productPages = categories.data.allProduct.edges.reduce((t, { node }) => {
-    return {
-      ...t,
-      [node.key]: {
-        key: node.key,
-        productName: node.productName,
-        productImageUrl: node.productImageUrl,
-        productDescription: node.productDescription,
-        images: [
-          ...t[node.key]?.images ?? [],
-          ...node.images
-        ],
-        keywords: [
-          ...t[node.key]?.keywords ?? [],
-          ...node.keywords
-        ],
-        categories: [
-          ...t[node.key]?.categories ?? [],
-          ...node.categories
-        ]
-      }
-    };
-  }, {});
+  const productPages = categories.data.allProduct.edges.reduce(
+    (t, { node }) => {
+      return {
+        ...t,
+        [node.key]: {
+          key: node.key,
+          productName: node.productName,
+          productImageUrl: node.productImageUrl,
+          productDescription: node.productDescription,
+          images: [...(t[node.key]?.images ?? []), ...node.images],
+          keywords: [...(t[node.key]?.keywords ?? []), ...node.keywords],
+          categories: [...(t[node.key]?.categories ?? []), ...node.categories],
+        },
+      };
+    },
+    {}
+  );
 
   const productTemplate = path.resolve(`src/templates/product.js`);
   const productListTemplate = path.resolve(`src/templates/product-list.js`);
   createPage({
-    path: '/products/',
+    path: "/products/",
     component: productListTemplate,
     context: {
-      products: productPages
-    }
+      products: productPages,
+    },
   });
 
-  Object.keys(productPages).forEach(key => {
+  Object.keys(productPages).forEach((key) => {
     const node = productPages[key];
     createPage({
       path: `/product/${node.key}`,
@@ -215,8 +211,29 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         productDescription: node.productDescription,
         keywords: node.keywords,
         categories: node.categories,
-        images: node.images
-      }
+        images: node.images,
+      },
     });
   });
+};
+
+// exports.onPreInit = () => {
+//   if (process.argv[2] === "build") {
+//     fs.rmdirSync(path.join(__dirname, "code"), { recursive: true });
+//     // fs.renameSync(
+//     //   path.join(__dirname, "public"),
+//     //   path.join(__dirname, "public_dev")
+//     // );
+//   }
+// };
+
+exports.onPostBuild = () => {
+  if (fs.existsSync(path.join(__dirname, "docs"))) {
+    fs.rmdirSync(path.join(__dirname, "docs"), { recursive: true });
+  }
+  fs.renameSync(path.join(__dirname, "public"), path.join(__dirname, "docs"));
+  // fs.renameSync(
+  //   path.join(__dirname, "public_dev"),
+  //   path.join(__dirname, "public")
+  // );
 };
