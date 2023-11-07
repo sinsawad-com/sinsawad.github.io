@@ -227,13 +227,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 //   }
 // };
 
-exports.onPostBuild = () => {
-  if (fs.existsSync(path.join(__dirname, "docs"))) {
-    fs.rmdirSync(path.join(__dirname, "docs"), { recursive: true });
-  }
-  fs.renameSync(path.join(__dirname, "public"), path.join(__dirname, "docs"));
-  // fs.renameSync(
-  //   path.join(__dirname, "public_dev"),
-  //   path.join(__dirname, "public")
-  // );
-};
+// exports.onPostBuild = () => {
+//   if (fs.existsSync(path.join(__dirname, "docs"))) {
+//     fs.rmdirSync(path.join(__dirname, "docs"), { recursive: true });
+//   }
+//   fs.renameSync(path.join(__dirname, "public"), path.join(__dirname, "docs"));
+//   // fs.renameSync(
+//   //   path.join(__dirname, "public_dev"),
+//   //   path.join(__dirname, "public")
+//   // );
+// };
