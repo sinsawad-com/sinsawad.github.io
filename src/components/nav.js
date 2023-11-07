@@ -15,8 +15,8 @@ const Navbar = () => {
       <div id="sidebarMenu">
         <ul className="sidebarMenuInner">
           <li><Link to="/"><div>สินสวัสดิ์<span>ผู้จัดจำหน่ายผลิตภัณฑ์ยาง</span></div></Link></li>
-          <li><Link to="/products/"><div>สินค้า</div></Link></li>
-          <li><Link to="/categories/"><div>กลุ่มสินค้า</div></Link></li>
+          <li><Link to="/products/"><div>ผลิตภัณฑ์</div></Link></li>
+          <li><Link to="/categories/"><div>กลุ่มผลิตภัณฑ์</div></Link></li>
           <li><Link to="/keywords/"><div>คำค้น</div></Link></li>
           <li><Link to="/contact/"><div>ติดต่อเรา</div></Link></li>
         </ul>
